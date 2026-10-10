@@ -1,0 +1,101 @@
+version: 2
+
+models:
+
+- name: silver_ecom_sales
+  description: "Cleaned e-commerce sales data."
+  columns:
+
+  - name: row_id
+    description: "Unique ID for each sales record."
+    data_tests:
+      - not_null
+      - unique
+
+  - name: order_id
+    description: "ID of the order."
+    data_tests:
+      - not_null
+
+  - name: customer_id
+    description: "ID of the customer."
+    data_tests:
+      - not_null
+      - relationships:
+          arguments:
+            to: ref('silver_customer')
+            field: customer_id
+
+  - name: product_id
+    description: "ID of the product."
+    data_tests:
+      - not_null
+      - relationships:
+          arguments:
+            to: ref('silver_product')
+            field: product_id
+
+  - name: region_id
+    description: "ID of the region."
+    data_tests:
+      - not_null
+      - relationships:
+          arguments:
+            to: ref('silver_region')
+            field: region_id
+
+  - name: segment
+    description: "Customer segment."
+    data_tests:
+      - not_null
+      - accepted_values:
+          arguments:
+            values: ['Consumer', 'Corporate', 'Self-Employed']
+
+- name: silver_product
+  description: "Cleaned product data."
+  columns:
+
+  - name: product_id
+    description: "Unique ID for each product."
+    data_tests:
+      - not_null
+      - unique
+
+  - name: category
+    description: "Product category."
+    data_tests:
+      - not_null
+
+  - name: subcategory
+    description: "Product subcategory."
+    data_tests:
+      - not_null
+
+- name: silver_customer
+  description: "Cleaned customer data."
+  columns:
+
+  - name: customer_id
+    description: "Unique ID for each customer."
+    data_tests:
+      - not_null
+      - unique
+
+  - name: gender
+    description: "Customer gender."
+    data_tests:
+      - not_null
+      - accepted_values:
+          arguments:
+            values: ['Male', 'Female', 'Unknown']
+
+- name: silver_region
+  description: "Cleaned region data."
+  columns:
+
+  - name: region_id
+    description: "Unique ID for each region."
+    data_tests:
+      - not_null
+      - unique

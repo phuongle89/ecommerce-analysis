@@ -1,0 +1,12 @@
+version: 2
+
+sources:
+  - name: e_commerce
+    database: ecommerce_xomdata
+    schema: e_commerce
+
+    tables:
+      - name: customer
+      - name: ecom_sales
+      - name: product
+      - name: region
