@@ -13,13 +13,8 @@
 
 ## Data Pipeline
 
-```mermaid
-flowchart LR
-    A["Raw data<br/>SQL Server"] --> B["EDA<br/>Profile data"]
-    B --> C["dbt<br/>Transform"]
-    C --> D["Clean data<br/>SQL Server"]
-    D --> E["Power BI<br/>Dashboard"]
-```
+<img width="1314" height="471" alt="image" src="https://github.com/user-attachments/assets/4b964917-b9c6-4f75-8d25-520147958f40" />
+
 
 | Stage | What was done |
 |---|---|
